@@ -25,4 +25,4 @@ COPY --from=build /app/publish .
 EXPOSE 80
 
 # Set entry point
-ENTRYPOINT ["dotnet", "YourBackend.dll"]
+ENTRYPOINT ["dotnet", "backend.dll"]
