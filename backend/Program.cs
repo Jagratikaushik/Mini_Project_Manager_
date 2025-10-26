@@ -35,6 +35,17 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://your-frontend.vercel.app")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 // Database
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -64,6 +75,7 @@ app.UseSwaggerUI();
 
 // Use CORS - This must be before UseAuthentication and UseAuthorization
 app.UseCors("AllowReactApp");
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
