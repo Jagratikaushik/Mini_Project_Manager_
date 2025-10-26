@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy the .csproj and restore dependencies
-COPY Assignment_2/backend/*.csproj ./backend/
+COPY backend/*.csproj ./backend/
 RUN dotnet restore backend/*.csproj
 
 # Copy all source code
-COPY Assignment_2/backend/. ./backend/
+COPY backend/. ./backend/
 
 # Build the project in Release mode
 WORKDIR /src/backend
